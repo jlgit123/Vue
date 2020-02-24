@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+	{{msg}}  <!-- v-once -->
+	
+	<p>Using mustaches: {{ rawHtml }}</p>
+	<p v-html="rawHtml"></p>
+	<!-- 原生HTML文件 -->
+	
+	<div v-bind:class="color">test...</div>
+	<!-- v-bind:属性="变量值" -->
+	
+	<p>{{ number + 1 }}</p>
+	<!-- 加法运算 -->
+
+	<p>{{ ok == 1 ? 'YES' : 'NO' }}</p>
+	<!-- 三元运算 -->
+	
+	<p>{{ message.split('').reverse().join('') }}</p>
+	<!-- 反序排列 -->
+</div>
+<script type="text/javascript">
+var vm = new Vue({
+	el : "#app",
+	data : {
+		msg : "hi vue",  //文本插值
+		rawHtml : '<span style="color:red">this is should be red</span>',
+		color:'blue',
+		number : 10,
+		ok : 1,
+		message : "vue"
+	}
+});
+vm.msg = "hi....";
+</script>
+<style type="text/css">
+.red{color:red;}
+.blue{color:blue; font-size:100px;}
+</style>
+</body>
+</html>

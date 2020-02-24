@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			{{ message }}  {{name}}
+			{{a}}  <!-- {{b}} -->
+		</div>
+		<script type="text/javascript">
+			/* 1.入门实例 */
+/* 			var app = new Vue({   //使用一个变量接收Vue
+				el:'#app',  //元素
+				data:{
+					message:'Hello Vue!',  //初始化赋值
+					name:'鹿角贝'
+				}
+			}) */
+			
+			/* 2.数据与方法 */
+			// 我们的数据对象
+			var data = { a: 1 }
+			
+			//Object.freeze(data) //阻止修改现有的属性，意味着响应系统无法再追踪变化。
+			
+			// 该对象被加入到一个 Vue 实例中
+			var vm = new Vue({
+				el:'#app',  //元素
+				data: data
+			})
+			
+			// $watch 是一个实例方法
+			vm.$watch('a', function (newValue, oldValue) {
+			  console.log(newValue,oldValue);
+			  // 这个回调将在 `vm.a` 改变后调用
+			  //观察某个变量的变化，其最新值和原来值
+			});
+			
+			// data.a = "hi,im new"; //√
+			vm.$data.a = "hello, new"; //√  $以便与用户定义的属性区分开来。
+			// vm.a = "test"; //√
+			// vm.b = "test-b"; //√
+			// data.b = "test--b"; //×，必须提前声明
+
+		
+		</script>
+	</body>
+</html>
